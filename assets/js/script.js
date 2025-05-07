@@ -1,20 +1,20 @@
 function obtenerNumeros() {
-    const numero1 = parseFloat(document.getElementById("numero1").value);
-    const numero2 = parseFloat(document.getElementById("numero2").value);
-    
-    if (numero1 === "" || numero2 === "") {
+    const valor1 = document.getElementById("numero1").value;
+    const valor2 = document.getElementById("numero2").value;
+
+    if (valor1.trim() === "" || valor2.trim() === "") {
         mostrarResultado("Por favor ingresa ambos números.");
         throw new Error("Campos vacíos");
     }
-    
-    const num1 = parseFloat(numero1);
-    const num2 = parseFloat(numero2);
-    
-    if (isNaN(num1) || isNaN(num2)) {
+
+    const numero1 = parseFloat(valor1);
+    const numero2 = parseFloat(valor2);
+
+    if (isNaN(numero1) || isNaN(numero2)) {
         mostrarResultado("Debes ingresar números válidos.");
-        throw new Error("Valores no númericos");
+        throw new Error("Valores no numéricos");
     }
-        
+
     return { numero1, numero2 };
 }
 
@@ -60,4 +60,10 @@ function dividir() {
     } catch (error) {
         console.error(error.message);
     }
+}
+
+function limpiar() {
+    document.getElementById("numero1").value = "";
+    document.getElementById("numero2").value = "";
+    document.getElementById("resultado").innerText = "Resultado: ";
 }
